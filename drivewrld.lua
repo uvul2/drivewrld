@@ -171,7 +171,7 @@ while getfenv().test2 do
   if failnum > 100 then
    warn("attempt fix in motion")
   game:GetService("ReplicatedStorage").Systems.Jobs.QuitJob:InvokeServer()
-  wait(1)
+  wait(20)
   end
   until game:GetService("Workspace"):FindFirstChild("CompletionRegion") or getfenv().test2 == false or failnum > 100
   wait()
