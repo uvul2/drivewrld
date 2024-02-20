@@ -178,7 +178,7 @@ while getfenv().test2 do
   if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-game:GetService("Workspace").CompletionRegion.Primary.Position).magnitude < 1000 then
       game:GetService("ReplicatedStorage").Systems.Jobs.QuitJob:InvokeServer()
-wait(1)
+wait(10)
    end
 end
   if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
