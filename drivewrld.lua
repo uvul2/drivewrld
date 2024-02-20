@@ -9,6 +9,9 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco
 local example = library:CreateWindow({
   text = "Drive WRLD - Moncler"
 })
+example:AddButton("Kill Script", function(state)
+	Script:Destroy()
+end)
 example:AddToggle("Auto Farm [Drift]", function(state)
    getfenv().autodrift = (state and true or false)
 while getfenv().autodrift do
