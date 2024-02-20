@@ -81,36 +81,6 @@ game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer(ohString
    end
    end
    end)
-
-example:AddToggle("test6", function(state)
-   getfenv().test6 = (state and true or false)
-   while getfenv().test6 do
-   wait()
-   if game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == false then
-
-game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
- repeat  wait()
-   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test6 == false
-   repeat task.wait()
-      task.wait(1)
-   until getfenv().test6 == false
-   elseif game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == true then
-   for i,v in pairs(game:GetService("Workspace").Cars:GetDescendants()) do
-   if v.Name == "Owner" and v.Value == game.Players.LocalPlayer and game.Players.LocalPlayer:DistanceFromCharacter(game:GetService("Workspace").CompletionRegion.Primary.Position) > 25 then
-   repeat task.wait()
-      pcall(function()
-         v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,-30))
-         end)
-   until not v.Parent:FindFirstChild("CompletionRegion") or getfenv().test6 == false
-   game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
-   task.wait()
-   end
-   end
-   end
-   end
-   end)
-
-  
 example:AddToggle("Auto Delivery[Cars]", function(state)
    getfenv().test = (state and true or false)
 while getfenv().test do
@@ -183,7 +153,7 @@ while getfenv().test2 do
       local num = math.random(1,9)
   for i,v in pairs(game:GetService("Workspace").Jobs.TrailerDelivery.StartPoints:GetChildren()) do
      if i == num then
-  game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", v.Name)
+  game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
   repeat  wait()
      print("waiting for trailer")
   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
@@ -233,6 +203,7 @@ repeat task.wait()
 v.Parent.Trailer:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,0))
    end)
     until not v.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
+game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
 task.wait()
 
 end
