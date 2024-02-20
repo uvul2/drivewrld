@@ -90,8 +90,9 @@ example:AddToggle("test2", function(state)
 
 game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
  repeat  wait()
-   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer) or getfenv().test2 == false
+   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
    repeat task.wait()
+      task.wait(1)
    until getfenv().test2 == false
    elseif game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == true then
    for i,v in pairs(game:GetService("Workspace").Cars:GetDescendants()) do
