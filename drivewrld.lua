@@ -150,7 +150,10 @@ getfenv().test2 = (state and true or false)
 while getfenv().test2 do
    wait()
    if game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == false then
-    game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
+      local num = ("6")
+  for i,v in pairs(game:GetService("Workspace").Jobs.TrailerDelivery.StartPoints:GetChildren()) do
+     if i == num then
+  game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", v.Name)
   repeat  wait()
      print("waiting for trailer")
   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
