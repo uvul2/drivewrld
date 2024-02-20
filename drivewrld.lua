@@ -80,7 +80,7 @@ end
    repeat task.wait()
       pcall(function()
       v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,0)
-   v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,-30))
+      v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,-30))
       end)
    until not v.Parent:FindFirstChild("CompletionRegion") or getfenv().test2 == false
    game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
