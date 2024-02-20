@@ -49,6 +49,36 @@ workspace:FindFirstChild("carautopart").Velocity = chr.HumanoidRootPart.CFrame.L
 task.wait(0.1)
 end
 end)
+
+example:AddToggle("test2", function(state)
+   getfenv().test2 = (state and true or false)
+   while getfenv().test2 do
+   wait()
+   if game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == false then
+
+game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
+ repeat  wait()
+   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer) or getfenv().test2 == false
+   local valen = 0
+   repeat task.wait()
+      task.wait(1)
+   until getfenv().test2 == false
+   elseif game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == true then
+   for i,v in pairs(game:GetService("Workspace").Cars:GetDescendants()) do
+   if v.Name == "Owner" and v.Value == game.Players.LocalPlayer and game.Players.LocalPlayer:DistanceFromCharacter(game:GetService("Workspace").CompletionRegion.Primary.Position) > 25 then
+   repeat task.wait()
+      pcall(function()
+         v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,-30))
+         end)
+   until not v.Parent:FindFirstChild("CompletionRegion") or getfenv().test2 == false
+   game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
+   task.wait()
+   end
+   end
+   end
+   end
+   end)
+  
 example:AddToggle("Auto Event Delivery", function(state)
    getfenv().test3 = (state and true or false)
    while getfenv().test3 do
