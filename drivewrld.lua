@@ -73,23 +73,23 @@ example:AddToggle("Test", function(state)
 wait(2)
    end
 end
-  if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
-  local dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-game:GetService("Workspace").CompletionRegion.Primary.Position).magnitude
-   for i,v in pairs(game:GetService("Workspace").Cars:GetDescendants()) do
-   if v.Name == "Owner" and v.Value == game.Players.LocalPlayer and game.Players.LocalPlayer:DistanceFromCharacter(game:GetService("Workspace").CompletionRegion.Primary.Position) > 25 then
-   repeat task.wait()
-      pcall(function()
-         v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,-30))
-	 v.Parent.Trailer:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,0))								
-         end)
-   until not v.Parent:FindFirstChild("CompletionRegion") or getfenv().test2 == false
-   game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
-   task.wait()
-   end
-   end
-   end
-   end
+if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
+local dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-game:GetService("Workspace").CompletionRegion.Primary.Position).magnitude
+for i,v in pairs(game:GetService("Workspace").Cars:GetDescendants()) do
+if v.Name == "Owner" and v.Value == game.Players.LocalPlayer and game.Players.LocalPlayer:DistanceFromCharacter(game:GetService("Workspace").CompletionRegion.Primary.Position) > 25 then
+repeat task.wait()
+   pcall(function()
+   v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,-30))
+v.Parent.Trailer:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,0))
    end)
+    until not v.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
+game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
+task.wait()
+end
+end
+end
+end
+end)
 
 
 example:AddToggle("Auto Event Delivery", function(state)
