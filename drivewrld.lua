@@ -7,8 +7,11 @@ end)
 getfenv().grav = workspace.Gravity
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/main/ui%20libs2"))()
 local example = library:CreateWindow({
-  text = "Drive WRLD - Moncler"
+  text = "Drive WRLD"
 })
+example:AddButton("Kill Script", function(state)
+	Script:Destroy()
+end)
 example:AddToggle("Auto Farm [Drift]", function(state)
    getfenv().autodrift = (state and true or false)
 while getfenv().autodrift do
@@ -49,7 +52,6 @@ workspace:FindFirstChild("carautopart").Velocity = chr.HumanoidRootPart.CFrame.L
 task.wait(0.1)
 end
 end)
-
 example:AddToggle("Auto Event Delivery", function(state)
    getfenv().test3 = (state and true or false)
    while getfenv().test3 do
@@ -82,7 +84,6 @@ game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer(ohString
    end
    end
    end)
-
 example:AddToggle("Auto Delivery[Cars]", function(state)
    getfenv().test = (state and true or false)
 while getfenv().test do
@@ -91,6 +92,7 @@ if game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == 
     local num = math.random(1,9)
 for i,v in pairs(game:GetService("Workspace").Jobs.TrailerDelivery.StartPoints:GetChildren()) do
    if i == num then
+task.wait(7)
 game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
 repeat  wait()
    print("waiting for trailer")
@@ -173,14 +175,14 @@ while getfenv().test2 do
   if failnum > 100 then
    warn("attempt fix in motion")
   game:GetService("ReplicatedStorage").Systems.Jobs.QuitJob:InvokeServer()
-  wait(20)
+  wait(1)
   end
   until game:GetService("Workspace"):FindFirstChild("CompletionRegion") or getfenv().test2 == false or failnum > 100
   wait()
   if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-game:GetService("Workspace").CompletionRegion.Primary.Position).magnitude < 1000 then
       game:GetService("ReplicatedStorage").Systems.Jobs.QuitJob:InvokeServer()
-wait(10)
+wait(2)
    end
 end
   if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
