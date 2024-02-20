@@ -91,7 +91,6 @@ example:AddToggle("test2", function(state)
 game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
  repeat  wait()
    until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer) or getfenv().test2 == false
-   local valen = 0
    repeat task.wait()
       task.wait(1)
    until getfenv().test2 == false
