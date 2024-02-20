@@ -69,9 +69,9 @@ example:AddToggle("Test", function(state)
   if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-game:GetService("Workspace").CompletionRegion.Primary.Position).magnitude < 1000 then
       game:GetService("ReplicatedStorage").Systems.Jobs.QuitJob:InvokeServer()
- wait(2)
+wait(2)
    end
- end
+end
   if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
   local dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-game:GetService("Workspace").CompletionRegion.Primary.Position).magnitude
    for i,v in pairs(game:GetService("Workspace").Cars:GetDescendants()) do
