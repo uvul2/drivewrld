@@ -12,44 +12,6 @@ local example = library:CreateWindow({
 example:AddButton("Kill Script", function(state)
 	Script:Destroy()
 end)
-
-example:AddToggle("Test", function(state)
-   getfenv().test2 = (state and true or false)
-   while getfenv().test2 do
-   wait()
-   if game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == false then
-   game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6") 
-   repeat  wait()
-     print("waiting for trailer")
-   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
-   repeat task.wait()
-   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
-   elseif game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == true then
-   until game:GetService("Workspace"):FindFirstChild("CompletionRegion") or getfenv().test2 == false or failnum > 100
-  wait()
-  if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
-   if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-game:GetService("Workspace").CompletionRegion.Primary.Position).magnitude < 1000 then
-      game:GetService("ReplicatedStorage").Systems.Jobs.QuitJob:InvokeServer()
-wait(2)
-   end
-end
-  if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
-  local dist = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-game:GetService("Workspace").CompletionRegion.Primary.Position).magnitude
-   for i,v in pairs(game:GetService("Workspace").Cars:GetDescendants()) do
-   if v.Name == "Owner" and v.Value == game.Players.LocalPlayer and game.Players.LocalPlayer:DistanceFromCharacter(game:GetService("Workspace").CompletionRegion.Primary.Position) > 25 then
-   repeat task.wait()
-      pcall(function()
-         v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,-30))
-         end)
-   until not v.Parent:FindFirstChild("CompletionRegion") or getfenv().test2 == false
-   game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
-   task.wait()
-   end
-   end
-   end
-   end
-   end)
-
 example:AddToggle("Auto Farm [Drift]", function(state)
    getfenv().autodrift = (state and true or false)
 while getfenv().autodrift do
