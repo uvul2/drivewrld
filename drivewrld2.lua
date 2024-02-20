@@ -226,7 +226,7 @@ task.spawn(function()
                         local yeas = string.split(distance, " ")
                         for i,v in next, yeas do
                             if tonumber(v) then
-                                if tonumber(v) < 2.1 and > 50 then
+                                if tonumber(v) < 2.1 and < 50 then
                                     Systems:WaitForChild("Jobs"):WaitForChild("StartJob"):InvokeServer("TrailerDelivery", "6")
                                 else
                                     jobDistance = v
