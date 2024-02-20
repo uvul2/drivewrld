@@ -156,6 +156,15 @@ while getfenv().test2 do
   game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
   repeat  wait()
      print("waiting for trailer")
+      distance = CompletionRegion:FindFirstChild("Primary"):FindFirstChild("DestinationIndicator"):FindFirstChild("Distance").Text
+      local yeas = string.split(distance, " ")
+      for i,v in next, yeas do
+          if tonumber(v) then
+              if tonumber(v) < 2.1 then
+                  game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
+              end
+          end
+      end
   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
   pcall(function()
   game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent.Trailer.PrimaryPart.Anchored = true
