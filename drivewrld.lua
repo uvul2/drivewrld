@@ -160,7 +160,7 @@ while getfenv().test2 do
       local yeas = string.split(distance, " ")
       for i,v in next, yeas do
           if tonumber(v) then
-              if tonumber(v) < 2.1 then
+              if tonumber(v) < 20.1 then
                   game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
               end
           end
