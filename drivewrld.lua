@@ -54,12 +54,12 @@ example:AddToggle("Test", function(state)
    while getfenv().test3 do
    wait()
    if game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == false then
-
 game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
  repeat  wait()
    until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("TrailerDelivery") or getfenv().test3 == false
    repeat task.wait()
       task.wait(1)
+      end
    elseif game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == true then
    for i,v in pairs(game:GetService("Workspace").Cars:GetDescendants()) do
    if v.Name == "Owner" and v.Value == game.Players.LocalPlayer and game.Players.LocalPlayer:DistanceFromCharacter(game:GetService("Workspace").CompletionRegion.Primary.Position) > 25 then
@@ -76,7 +76,7 @@ game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("Trailer
    end
    end)
 
-example:AddToggle("Test", function(state)
+example:AddToggle("Auto Event Delivery", function(state)
    getfenv().test3 = (state and true or false)
    while getfenv().test3 do
    wait()
