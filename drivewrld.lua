@@ -203,7 +203,6 @@ repeat task.wait()
 v.Parent.Trailer:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,0))
    end)
     until not v.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
-game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
 task.wait()
 
 end
