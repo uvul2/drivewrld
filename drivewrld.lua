@@ -89,7 +89,7 @@ if game:GetService("Players").LocalPlayer.PlayerGui.Score.Frame.Jobs.Visible == 
     local num = math.random(1,9)
 for i,v in pairs(game:GetService("Workspace").Jobs.TrailerDelivery.StartPoints:GetChildren()) do
    if i == num then
-game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
+game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", v.Name)
 repeat  wait()
    print("waiting for trailer")
 until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test == false
@@ -104,8 +104,11 @@ local failnum = 0
 repeat wait()
    failnum = failnum +1
    print("waiting for CompletionRegion")
+if failnum > 100 then
+game:GetService("ReplicatedStorage").Systems.Jobs.QuitJob:InvokeServer()
+wait(1)
 end
-until game:GetService("Workspace"):FindFirstChild("CompletionRegion") or getfenv().test == false
+until game:GetService("Workspace"):FindFirstChild("CompletionRegion") or getfenv().test == false or failnum > 100
 wait()
 if game:GetService("Workspace"):FindFirstChild("CompletionRegion") then
    if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-game:GetService("Workspace").CompletionRegion.Primary.Position).magnitude < 1000 then
@@ -131,10 +134,11 @@ for i,v in pairs(game:GetService("Workspace").Cars:GetDescendants()) do
    if v.Name == "Owner" and v.Value == game.Players.LocalPlayer and game.Players.LocalPlayer:DistanceFromCharacter(game:GetService("Workspace").CompletionRegion.Primary.Position) > 25 then
 repeat task.wait()
    pcall(function()
-   v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,-30))
+   v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,-20))
 v.Parent.Trailer:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,0))
    end)
     until not v.Parent:FindFirstChild("Trailer") or getfenv().test == false
+game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
 task.wait()
 end
 end
