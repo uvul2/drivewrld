@@ -74,7 +74,6 @@ game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer(ohString
          v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,0))
          end)
    until not v.Parent:FindFirstChild("ChocolateDelivery") or getfenv().test3 == false
-   firesignal(game.Players.LocalPlayer.PlayerGui.JobComplete.Window.Content.Buttons.Close.MouseButton1Click)
    game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
    task.wait()
    end
@@ -95,9 +94,9 @@ repeat  wait()
    print("waiting for trailer")
 until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test == false
 pcall(function()
-game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent.Trailer.PrimaryPart.Anchored = true
+game.Players.LocalPlayer.Character.Head.PrimaryPart.Anchored = true
 task.wait(1.5)
-game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent.Trailer.PrimaryPart.Anchored = false
+game.Players.LocalPlayer.Character.Head.PrimaryPart.Anchored = false
 end)
 end
 end
@@ -157,20 +156,11 @@ while getfenv().test2 do
   game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
   repeat  wait()
      print("waiting for trailer")
-      distance = CompletionRegion:FindFirstChild("Primary"):FindFirstChild("DestinationIndicator"):FindFirstChild("Distance").Text
-      local yeas = string.split(distance, " ")
-      for i,v in next, yeas do
-          if tonumber(v) then
-              if tonumber(v) < 20.1 then
-                  game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer("TrailerDelivery", "6")
-              end
-          end
-      end
   until game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
   pcall(function()
-  game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent.Trailer.PrimaryPart.Anchored = true
+  game.Players.LocalPlayer.Character.Head.PrimaryPart.Anchored = true
   task.wait(1.5)
-  game.Players.LocalPlayer.Character.Humanoid.SeatPart.Parent.Parent.Trailer.PrimaryPart.Anchored = false
+  game.Players.LocalPlayer.Character.Head.PrimaryPart.Anchored = false
   end)
   end
   end
@@ -213,6 +203,7 @@ repeat task.wait()
 v.Parent.Trailer:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,0))
    end)
     until not v.Parent:FindFirstChild("Trailer") or getfenv().test2 == false
+firesignal(game.Players.LocalPlayer.PlayerGui.JobComplete.Window.Content.Buttons.Close.MouseButton1Click)
 game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
 task.wait()
 
