@@ -74,6 +74,7 @@ game:GetService("ReplicatedStorage").Systems.Jobs.StartJob:InvokeServer(ohString
          v.Parent:PivotTo(game:GetService("Workspace").CompletionRegion.Primary.CFrame*CFrame.new(0,5,0))
          end)
    until not v.Parent:FindFirstChild("ChocolateDelivery") or getfenv().test3 == false
+   firesignal(game.Players.LocalPlayer.PlayerGui.JobComplete.Window.Content.Buttons.Close.MouseButton1Click)
    game:GetService("ReplicatedStorage").Systems.Jobs.CashBankedEarnings:FireServer()
    task.wait()
    end
