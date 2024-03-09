@@ -15,6 +15,9 @@ example:AddToggle("Auto Kill", function(state)
 while getfenv().kill do
   wait()
   game:GetService("ReplicatedStorage").Remotes.M1:FireServer(game:GetService("Players")["kga90518ssf"].Character.Head, 5, false)
+  game:GetService("ReplicatedStorage").Remotes.M1:FireServer(game:GetService("Players")["jidgisd95232sf"].Character.Head, 5, false)
+  game:GetService("ReplicatedStorage").Remotes.M1:FireServer(game:GetService("Players")["flaksffasor021"].Character.Head, 5, false)
+  game:GetService("ReplicatedStorage").Remotes.M1:FireServer(game:GetService("Players")["IlIIIIlIlIIIlIIlIIII"].Character.Head, 5, false)
   wait()
 end
 end)
