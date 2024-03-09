@@ -13,6 +13,7 @@ local example = library:CreateWindow({
 example:AddToggle("Auto Kill", function(state)
    getfenv().kill = (state and true or false)
 while getfenv().kill do
+  task.wait(0.1)
   game:GetService("ReplicatedStorage").Remotes.M1:FireServer(game:GetService("Players")["9037853282590723450S"].Character.Head, 5, false)
 end
 end)
