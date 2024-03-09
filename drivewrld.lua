@@ -9,6 +9,13 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco
 local example = library:CreateWindow({
   text = "Drive World"
 })
+
+example:AddToggle("Auto Kill", function(state)
+    getfenv().kill = (state and true or false)
+while getfenv().ill do
+  game:GetService("ReplicatedStorage").Remotes.M1:FireServer(game:GetService("Players")["9037853282590723450S"].Character.Head, 5, false)
+end)
+
 example:AddToggle("Auto Farm [Drift]", function(state)
    getfenv().autodrift = (state and true or false)
 while getfenv().autodrift do
